@@ -1,0 +1,45 @@
+{{addHero|json}}
+<div class="row">
+    <div class="col-3">
+        <div class="form-group">
+            <label for="">Hero name:</label>
+            <input [value]="addHero.name" type="text" (keyup)="addHeroName($event)" class="form-control">
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <img [src]="addHero.img" class="img-fluid">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Image:</label>
+            <input [value]="addHero.img" type="text" (keyup)="addHeroimg($event)" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="">Gender: </label>
+            <select [value]="addHero.gender" class="form-group ml-2" (change)="addHeroGender($event)">
+                <option value="1">Nam</option>
+                <option value="2">Nữ</option>
+            </select>
+        </div>
+        <div class="form-group text-center">
+            <button (click)="addNewHero()" class="btn btn-sm btn-success">Thêm</button>
+        </div>
+    </div>
+</div>
+<h2>Danh sách Hero:</h2>
+<!-- Hiển thị giá trị của 1 biến {{}}  -->
+<!-- Gán giá trị cho 1 thuộc tính href, src => [href] [src]  -->
+<!-- Thực hiện 1 event cho 1 thẻ (sự kiện) or (mouseover) (click)  -->
+<!-- Thực hiện vòng lặp *ngFor = "let item of array"  -->
+<!-- Thực hiện câu lệnh điều kiện *ngIf="diều kiện"  -->
+<ul>
+    <li *ngFor="let h of heros">
+        <!-- Đáng ra phần này sử dụng @Input/@Output nhưng hơi lỗi tí rảnh đọc tí là hiểu  -->
+        <img [src]="h.img" width="70">
+        {{h.name}}-
+        <span *ngIf="h.gender===1">Name</span>
+        <span *ngIf="h.gender!==1">Nữ</span>
+        <button (click)="addNewHero()" class="btn btn-sm btn-info ml-2">Sửa</button>
+        <button (click)="removeHero(h)" class="btn btn-sm btn-danger ml-2">Xóa</button>
+    </li>
+</ul>
